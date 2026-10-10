@@ -4,7 +4,7 @@
 window.SITE = {
   canonicalUrl: "https://raneem-nahila.vercel.app/",                       // e.g. "https://raneem-nahila.example.com/" (also edit <head> in index.html)
   // RSVP -> Google Sheet via Apps Script web app URL (see README step A). Empty = RSVP shows "not connected".
-  rsvpEndpoint: "https://script.google.com/macros/s/AKfycbyXlFqzCnACXlm84gD7N5wIsGBs5AyB39a-4O-2fiVBAzZdCy6U5bdlqdhm0uDHhBFV/exec",
+  rsvpEndpoint: "https://script.google.com/macros/s/AKfycbxxWEvRMdFBP53340wFOp2tthHavENECdhLkw6qUFafLNU1fRyDZ6jNpGK3tYK2rYBc/exec",
   // Wishes -> Firebase Realtime Database (REST, no SDK needed).
   firebase: { databaseURL: "https://raneem-nahila-default-rtdb.asia-southeast1.firebasedatabase.app", apiKey: "AIzaSyCYOalliBfQdQaLupxORXXdkmmCYGLZoGY", projectId: "raneem-nahila", collection: "wishes" },
   weddingDate: "2026-11-08T11:00:00+05:30", // 11:00 AM IST
