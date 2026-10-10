@@ -1,8 +1,7 @@
 'use strict';
 /* Wishes wall — Firebase Realtime Database via REST (no SDK).
    Config: SITE.firebase { databaseURL, apiKey, collection }
-   Guests submit wishes stored as unapproved (approved: false).
-   Approve by setting approved: true in the Firebase console. */
+   All wishes are auto-approved and shown instantly. */
 (() => {
   const f    = document.getElementById('wishForm');
   const st   = document.getElementById('wishStatus');
@@ -13,9 +12,6 @@
   const ready = !!(fb.databaseURL && fb.apiKey);
   const col   = fb.collection || 'wishes';
 
-  // REST base: https://<db>.firebasedatabase.app/<collection>.json?auth=<key>
-  const base  = () => `${fb.databaseURL}/${encodeURIComponent(col)}.json?auth=${encodeURIComponent(fb.apiKey)}`;
-
   const set  = (m, k) => { st.textContent = m; st.className = 'status ' + (k || ''); };
   const esc  = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const note = t => { list.innerHTML = `<p class="empty">${t}</p>`; };
@@ -24,15 +20,13 @@
     if (!ready) return note('Wishes are not connected yet. Messages will appear here once Firebase is set up.');
     note('Loading blessings…');
     try {
-      // Fetch only approved wishes using orderBy + equalTo query
-      const url = `${fb.databaseURL}/${encodeURIComponent(col)}.json?orderBy="approved"&equalTo=true&auth=${encodeURIComponent(fb.apiKey)}`;
+      const url = `${fb.databaseURL}/${encodeURIComponent(col)}.json?orderBy="createdAt"&limitToLast=60`;
       const r   = await fetch(url);
       if (!r.ok) throw new Error(r.status);
       const data = await r.json();
 
       if (!data) return note('No blessings yet — be the first to leave one.');
 
-      // data is an object keyed by push-id; convert to array and sort newest first
       const rows = Object.values(data)
         .filter(w => w.message)
         .sort((a, b) => (b.createdAt || '').localeCompare(a.createdAt || ''));
@@ -57,20 +51,22 @@
 
     btn.disabled = true; set('Sending…');
     try {
-      // POST (push) a new child node — approved defaults to false for moderation
-      const r = await fetch(base(), {
-        method:  'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({
-          name:      d.name,
-          message:   d.message,
-          approved:  false,
-          createdAt: new Date().toISOString()
-        })
-      });
+      const r = await fetch(
+        `${fb.databaseURL}/${encodeURIComponent(col)}.json?auth=${encodeURIComponent(fb.apiKey)}`,
+        {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body:    JSON.stringify({
+            name:      d.name,
+            message:   d.message,
+            createdAt: new Date().toISOString()
+          })
+        }
+      );
       if (!r.ok) throw new Error(r.status);
-      set('Thank you. Your blessing was saved and will appear here once approved.', 'ok');
+      set('Thank you, ' + d.name + '. Your blessing has been shared!', 'ok');
       f.reset();
+      load(); // refresh the list immediately
     } catch (x) {
       set('Your message could not be saved. Please try again in a moment.', 'err');
     }
