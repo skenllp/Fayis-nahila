@@ -11,7 +11,7 @@ Everything lives in `js/config.js`: names, parents, events, story, timeline, gal
 - **Event times:** edit `events` and `timeline` in config; countdown target is `weddingDate` (IST, ISO format).
 
 ## Before sharing on WhatsApp
-1. In `index.html` replace every `https://YOUR-DOMAIN-HERE/` (canonical, og:url, og:image, twitter:image) with your real URL. `og-image.jpg` (1200×630) is already included; WhatsApp needs the absolute URL.
+1. In `index.html` replace every `https://raneem-nahila.vercel.app/` (canonical, og:url, og:image, twitter:image) with your real URL. `og-image.jpg` (1200×630) is already included; WhatsApp needs the absolute URL.
 2. WhatsApp caches previews — if you change the image later, add `?v=2` to the og:image URL.
 
 ## Connect RSVP (Google Sheet) and Wishes (Firebase)

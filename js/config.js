@@ -2,11 +2,11 @@
    EDIT EVERYTHING HERE — names, events, story text, assets, API endpoints
    ======================================================================== */
 window.SITE = {
-  canonicalUrl: "",                       // e.g. "https://raneem-nahila.example.com/" (also edit <head> in index.html)
+  canonicalUrl: "https://raneem-nahila.vercel.app/",                       // e.g. "https://raneem-nahila.example.com/" (also edit <head> in index.html)
   // RSVP -> Google Sheet via Apps Script web app URL (see README step A). Empty = RSVP shows "not connected".
-  rsvpEndpoint: "",
+  rsvpEndpoint: "https://script.google.com/macros/s/AKfycbyXlFqzCnACXlm84gD7N5wIsGBs5AyB39a-4O-2fiVBAzZdCy6U5bdlqdhm0uDHhBFV/exec",
   // Wishes -> Firebase Firestore (REST, no SDK needed). Fill both from Firebase console (see README step B).
-  firebase: { apiKey: "", projectId: "", collection: "wishes" },
+  firebase: { apiKey: "AIzaSyCYOalliBfQdQaLupxORXXdkmmCYGLZoGY", projectId: "raneem-nahila", collection: "wishes" },
   weddingDate: "2026-11-08T11:00:00+05:30", // 11:00 AM IST
   music: "assets/music/music.mp3",
   monogram: "assets/images/monogram.png",
