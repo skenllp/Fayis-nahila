@@ -16,24 +16,23 @@ const ICONS = {
 function renderContent() {
   $('#coupleCards').innerHTML = [C.groom, C.bride].map(p => `
     <article class="pcard reveal">
-      <div class="pcard-photo"><img src="${esc(p.photo)}" alt="${esc(p.display)}" loading="lazy"></div>
+      <div class="pcard-photo"><img src="${esc(p.photo)}" alt="${esc(p.display)}" loading="lazy"${p.crop ? ` style="--zx:${esc(p.crop.x)};--zy:${esc(p.crop.y)};--zs:${p.crop.scale}"` : ''}></div>
       <p class="role">${esc(p.role)}</p>
       <h3>${esc(p.name)}</h3>
-      <p class="known">Known as <i>${esc(p.display)}</i></p>
-      <p class="prof">${esc(p.profession)}</p>
       <dl><dt>Parents</dt><dd>${esc(p.parents)}</dd><dt>Siblings</dt><dd>${esc(p.siblings)}</dd><dt>Address</dt><dd>${esc(p.address)}</dd></dl>
     </article>`).join('');
 
-  $('#storyList').innerHTML = C.story.map((s, i) => {
-    if (s.full) return `<article class="chapter full reveal"><img class="story-full" src="${esc(s.full)}" alt="${esc([s.title, s.date, ...s.lines].filter(Boolean).join('. '))}" loading="lazy"></article>`;
-    const media = s.slot === 'story'
-      ? `<div class="story-phone" aria-hidden="true"><span class="bar"></span><div class="sp-head"><b></b><i></i></div><div class="sp-body slot">Instagram story<br>(replace with screenshot)</div></div>`
-      : s.photo ? `<div class="story-img ${s.natural ? 'story-natural' : 'arch-photo'}"><img src="${esc(s.photo)}" alt="${esc(s.photoAlt || s.title)}" loading="lazy"></div>`
-      : `<div class="story-img arch-photo slot"><span>Photo slot</span></div>`;
-    return `<article class="chapter reveal ${i % 2 ? 'flip' : ''}">${media}
-      <div class="chapter-text"><p class="chap-no">Chapter ${['One', 'Two', 'Three'][i]}</p><h3>${esc(s.title)}</h3>
-      ${s.date ? `<p class="chap-date">${esc(s.date)}</p>` : ''}${s.lines.map(l => `<p>${esc(l)}</p>`).join('')}</div></article>`;
+  $('#storyTrack').innerHTML = C.story.map((s, i) => {
+    const no = String(i + 1).padStart(2, '0');
+    const media = s.full
+      ? `<img class="story-full" src="${esc(s.full)}" alt="${esc([s.title, s.date, ...s.lines].filter(Boolean).join('. '))}" loading="lazy">`
+      : `<div class="story-natural"><img src="${esc(s.photo)}" alt="${esc(s.photoAlt || s.title)}" loading="lazy"></div>`;
+    const lines = s.full ? '' : s.lines.map(l => `<p>${esc(l)}</p>`).join('');
+    return `<article class="slide" role="group" aria-roledescription="slide" aria-label="Chapter ${no}: ${esc(s.title)}">
+      <div class="slide-media">${media}</div>
+      <div class="slide-text"><p class="chap-no">Chapter ${no}</p><h3>${esc(s.title)}</h3>${s.date ? `<p class="chap-date">${esc(s.date)}</p>` : ''}${lines}</div></article>`;
   }).join('');
+  $('#slDots').innerHTML = C.story.map((s, i) => `<button type="button" role="tab" aria-label="Chapter ${i + 1}: ${esc(s.title)}" data-i="${i}"></button>`).join('');
 
   $('#tl').innerHTML = C.timeline.map(t => `
     <li class="tl-item reveal"><span class="tl-ic"><svg viewBox="0 0 36 36" fill="none" stroke="#B99762" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">${ICONS[t.icon]}</svg></span>
@@ -47,7 +46,7 @@ function renderContent() {
   const f = C.family;
   $('#familyBox').innerHTML = `<h3>${esc(f.hosts)}</h3><p>${f.address.map(esc).join('<br>')}</p>
     <p><a class="tel" href="tel:+91${esc(f.phone)}">Mob: ${esc(f.phone)}</a></p>
-    <div class="orn"><i></i></div><p class="spaced">With best compliments from</p><p class="comp">${esc(f.compliments)}</p>`;
+    <div class="orn"><i></i></div><p class="spaced">With Best Compliments</p><p class="comp">${esc(f.compliments)}</p>`;
 }
 
 function initReveal() {
@@ -74,9 +73,29 @@ function initNav() {
 
 function initParallax() {
   if (reduceMotion) return;
-  const els = $$('#home .hero-mono, #home .hero-names'); let tick = false;
+  const bg = $('#home .hero-bg'); let tick = false;
   addEventListener('scroll', () => { if (tick) return; tick = true; requestAnimationFrame(() => {
-    const y = Math.min(scrollY, 600); els.forEach((e, i) => e.style.transform = `translate3d(0,${y * (.04 + i * .02)}px,0)`); tick = false; }); }, { passive: true });
+    if (scrollY < innerHeight * 1.2) bg.style.transform = `translate3d(0,${scrollY * .18}px,0)`; tick = false; }); }, { passive: true });
+}
+
+function initSlider() {
+  const track = $('#storyTrack'), slides = $$('.slide', track), dots = $$('#slDots button'), prev = $('#slPrev'), next = $('#slNext');
+  if (!slides.length) return;
+  let idx = 0, tick = false;
+  const go = i => { i = Math.max(0, Math.min(slides.length - 1, i)); track.scrollTo({ left: slides[i].offsetLeft - track.offsetLeft, behavior: reduceMotion ? 'auto' : 'smooth' }); };
+  const update = () => {
+    const w = track.clientWidth || 1;
+    slides.forEach((sl, i) => { const p = Math.max(-1, Math.min(1, (sl.offsetLeft - track.offsetLeft - track.scrollLeft) / w)); sl.style.setProperty('--p', p.toFixed(3)); });
+    idx = Math.round(track.scrollLeft / w);
+    dots.forEach((d, i) => { d.classList.toggle('on', i === idx); d.setAttribute('aria-selected', i === idx); });
+    prev.disabled = idx === 0; next.disabled = idx === slides.length - 1; tick = false;
+  };
+  track.addEventListener('scroll', () => { if (!tick) { tick = true; requestAnimationFrame(update); } }, { passive: true });
+  prev.addEventListener('click', () => go(idx - 1)); next.addEventListener('click', () => go(idx + 1));
+  dots.forEach(d => d.addEventListener('click', () => go(+d.dataset.i)));
+  track.addEventListener('keydown', e => { if (e.key === 'ArrowRight') { e.preventDefault(); go(idx + 1); } if (e.key === 'ArrowLeft') { e.preventDefault(); go(idx - 1); } });
+  addEventListener('resize', () => go(idx));
+  update();
 }
 
 function initPetals() {
@@ -88,5 +107,5 @@ function initPetals() {
 
 document.addEventListener('DOMContentLoaded', () => {
   $('#heroPhoto').src = C.heroPhoto;
-  renderContent(); initReveal(); initNav(); initParallax(); initPetals();
+  renderContent(); initReveal(); initNav(); initParallax(); initSlider(); initPetals();
 });

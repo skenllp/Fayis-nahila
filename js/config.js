@@ -14,13 +14,14 @@ window.SITE = {
   groom: {
     name: "Dr. Fayis Raneem A M", display: "Raneem", role: "Groom",
     parents: "A M Sanaulla & C K Najmunnisa", siblings: "Reja, Rana, Rafa",
-    address: "Anandamangalath House, Trippanachi P.O., Malappuram", profession: "Dentist",
-    photo: "assets/images/groom.jpg"
+    address: "Anandamangalath House, Trippanachi P.O., Malappuram",
+    photo: "assets/images/groom.jpg",
+    crop: { x: "60%", y: "50%", scale: 1.7 }   // zoom on the portrait; faces/outfit untouched
   },
   bride: {
     name: "Dr. Nahila C", display: "Nahila", role: "Bride",
     parents: "Abbas C & Najmunneessa P", siblings: "Nihal C, Nifan C, Nibil C",
-    address: "Chennangadan (H), Edakkara P.O., Kooliminda", profession: "Dentist",
+    address: "Chennangadan (H), Edakkara P.O., Kooliminda",
     photo: "assets/images/bride.jpg"
   },
   story: [
@@ -30,7 +31,7 @@ window.SITE = {
     { title: "And Then We Met", date: "15 February 2026", full: "assets/images/meeting-full.jpg",
       lines: ["What began as a proposal finally became a meeting.", "Two families.", "Two strangers.",
               "A first conversation that quietly changed everything."] },
-    { title: "A Beautiful Beginning", date: "09 May 2026 — Engagement", photo: "assets/images/couple.jpg", natural: true, photoAlt: "Raneem and Nahila on their engagement day",
+    { title: "A Beautiful Beginning", date: "09 May 2026", photo: "assets/images/couple.jpg", natural: true, photoAlt: "Raneem and Nahila on their engagement day",
       lines: ["A promise was made, a beautiful journey began...",
               "With the blessings of Allah and the love and support of our families, we celebrated our engagement."] }
   ],
@@ -41,9 +42,9 @@ window.SITE = {
     { icon: "canopy", title: "The Wedding", date: "08 November 2026 | 11:00 AM – 2:00 PM", place: "MKH Auditorium, Trippanachi, Malappuram", text: "And the story continues..." }
   ],
   events: [
-    { title: "Nikkah", day: "Saturday, 7 November 2026", time: "11:00 AM", venue: "Celebrations Auditorium", place: "Munda, Malappuram",
+    { title: "Nikkah", day: "Saturday, 07 November 2026", time: "11:00 AM", venue: "Celebrations Auditorium", place: "Munda, Malappuram",
       mapQuery: "Celebrations Auditorium, Munda, Malappuram" },
-    { title: "Wedding Celebration", day: "Sunday, 8 November 2026", time: "11:00 AM – 2:00 PM", venue: "MKH Auditorium", place: "Trippanachi, Malappuram",
+    { title: "Wedding Celebration", day: "Sunday, 08 November 2026", time: "11:00 AM – 2:00 PM", venue: "MKH Auditorium", place: "Trippanachi, Malappuram",
       mapQuery: "MKH Auditorium, Trippanachi, Malappuram" }
   ],
   gallery: [   // only the childhood photo for now; add more entries later and the gallery grows automatically

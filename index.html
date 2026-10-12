@@ -35,7 +35,6 @@
     <div class="arch-frame">
       <img class="open-mono" src="assets/images/monogram.png" alt="R and N monogram" width="150" height="150">
       <h1 class="script open-names">Raneem &amp; Nahila</h1>
-      <p class="open-date">08 November 2026</p>
     </div>
     <button id="openBtn" class="btn btn-solid" type="button">Open the Invitation</button>
     <button id="skipBtn" class="link-btn" type="button">Skip intro</button>
@@ -47,61 +46,27 @@
 <nav id="nav" aria-label="Main">
   <button id="menuBtn" class="menu-btn" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Menu"><span></span><span></span><span></span></button>
   <ul id="navLinks">
-    <li><a href="#home">Home</a></li><li><a href="#couple">Couple</a></li><li><a href="#story">Story</a></li>
-    <li><a href="#events">Events</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#rsvp">RSVP</a></li><li><a href="#wishes">Wishes</a></li>
+    <li><a href="#home">Home</a></li><li><a href="#scratch">Date</a></li><li><a href="#couple">Couple</a></li>
+    <li><a href="#events">Venues</a></li><li><a href="#journey">Journey</a></li><li><a href="#calendar">Save</a></li>
+    <li><a href="#rsvp">RSVP</a></li><li><a href="#wishes">Wishes</a></li>
   </ul>
 </nav>
 
 <main>
-<!-- 03 HERO -->
-<section id="home" class="hero">
+<!-- 01 HERO -->
+<section id="home" class="hero" aria-label="Raneem and Nahila">
+  <div class="hero-bg"><img id="heroPhoto" class="hero-photo" src="assets/images/couple.jpg" alt="Raneem and Nahila on their engagement day" fetchpriority="high"></div>
+  <div class="hero-shade" aria-hidden="true"></div>
   <div class="hero-inner">
-    <img class="hero-mono" src="assets/images/monogram.png" alt="" width="90" height="90">
-    <h2 class="script hero-names">Raneem &amp; Nahila</h2>
+    <h1 class="script hero-title">Raneem &amp; Nahila</h1>
     <p class="ar verse" lang="ar" dir="rtl">وَخَلَقْنَاكُمْ أَزْوَاجًا</p>
     <p class="quote">“And We created you in pairs.”</p>
     <p class="cite">Qur'an 78:8</p>
-    <div class="portrait arch-photo"><img id="heroPhoto" src="assets/images/couple.jpg" alt="Raneem and Nahila" fetchpriority="high"></div>
-    <p class="hero-date">08 November 2026</p>
   </div>
+  <span class="scroll-cue" aria-hidden="true"></span>
 </section>
 
-<!-- 04 COUNTDOWN -->
-<section id="countdown" class="section tint">
-  <h2 class="script h-script">Beginning our forever in</h2>
-  <div class="cd" id="cd" aria-live="off">
-    <div><b id="cdD">--</b><span>Days</span></div><div><b id="cdH">--</b><span>Hours</span></div>
-    <div><b id="cdM">--</b><span>Minutes</span></div><div><b id="cdS">--</b><span>Seconds</span></div>
-  </div>
-  <p id="cdMsg" class="cd-msg" hidden></p>
-</section>
-
-<!-- 05 COUPLE -->
-<section id="couple" class="section"><h2 class="h-serif reveal">The Couple</h2><div class="orn"><i></i></div>
-  <div class="cards" id="coupleCards"></div></section>
-
-<!-- 06 STORY -->
-<section id="story" class="section tint"><h2 class="h-serif reveal">Our Story</h2><div class="orn"><i></i></div>
-  <div id="storyList"></div></section>
-
-<!-- 07 JOURNEY -->
-<section id="journey" class="section journey">
-  <div class="journey-card reveal">
-    <p class="eyebrow">Our</p><h2 class="script h-script">Journey</h2><div class="orn"><i></i></div>
-    <p class="sub">A beautiful journey, guided by His blessings...</p>
-    <ol class="tl" id="tl"></ol>
-    <div class="orn"><i></i></div>
-    <p class="sub">Your presence, prayers and blessings mean the world to us.</p>
-  </div>
-</section>
-
-<!-- 08 CALENDAR -->
-<section id="calendar" class="section">
-  <h2 class="script h-script reveal">Save the Date</h2><p class="spaced">Our Forever Begins</p><div class="orn"><i></i></div>
-  <div class="cal reveal"><h3>November 2026</h3><div class="cal-grid" id="calGrid" role="grid" aria-label="November 2026"></div></div>
-</section>
-
-<!-- 09 SCRATCH -->
+<!-- 02 SCRATCH -->
 <section id="scratch" class="section tint">
   <h2 class="h-serif reveal">A Date Written in Our Destiny</h2><div class="orn"><i></i></div>
   <p class="sub">Scratch the gold to reveal it</p>
@@ -112,15 +77,53 @@
   <button id="revealBtn" class="btn btn-ghost" type="button">Reveal date</button>
 </section>
 
-<!-- 10 EVENTS -->
-<section id="events" class="section"><h2 class="h-serif reveal">Wedding Events</h2><div class="orn"><i></i></div>
+<!-- 03 COUNTDOWN -->
+<section id="countdown" class="section tint">
+  <h2 class="script h-script reveal">Beginning our forever in</h2>
+  <div class="cd" id="cd" aria-live="off">
+    <div><b id="cdD">--</b><span>Days</span></div><div><b id="cdH">--</b><span>Hours</span></div>
+    <div><b id="cdM">--</b><span>Minutes</span></div><div><b id="cdS">--</b><span>Seconds</span></div>
+  </div>
+  <p id="cdMsg" class="cd-msg" hidden></p>
+</section>
+
+<!-- 04 COUPLE -->
+<section id="couple" class="section"><h2 class="h-serif reveal">The Couple</h2><div class="orn"><i></i></div>
+  <div class="cards" id="coupleCards"></div></section>
+
+<!-- 05 VENUES -->
+<section id="events" class="section"><h2 class="h-serif reveal">Wedding Venues</h2><div class="orn"><i></i></div>
   <div class="cards ev" id="eventCards"></div></section>
 
-<!-- 11 GALLERY -->
-<section id="gallery" class="section tint"><h2 class="script h-script reveal">Moments to Remember</h2><div class="orn"><i></i></div>
-  <div class="grid" id="galGrid"></div></section>
+<!-- 06 OUR JOURNEY (story slider + timeline) -->
+<section id="journey" class="section journey">
+  <div class="journey-head reveal">
+    <p class="eyebrow">Our</p><h2 class="script h-script">Journey</h2><div class="orn"><i></i></div>
+    <p class="sub">A beautiful journey, guided by His blessings...</p>
+  </div>
+  <div class="slider reveal" id="storySlider" role="region" aria-roledescription="carousel" aria-label="Our story">
+    <div class="track" id="storyTrack" tabindex="0"></div>
+    <div class="slider-ctl">
+      <button class="sl-btn" id="slPrev" type="button" aria-label="Previous chapter">‹</button>
+      <div class="dots" id="slDots" role="tablist" aria-label="Chapters"></div>
+      <button class="sl-btn" id="slNext" type="button" aria-label="Next chapter">›</button>
+    </div>
+  </div>
+  <div class="journey-card reveal">
+    <h3 class="tl-head">Our Timeline</h3><div class="orn"><i></i></div>
+    <ol class="tl" id="tl"></ol>
+    <div class="orn"><i></i></div>
+    <p class="sub">Your presence, prayers and blessings mean the world to us.</p>
+  </div>
+</section>
 
-<!-- 12 RSVP -->
+<!-- 07 SAVE THE DATE -->
+<section id="calendar" class="section">
+  <h2 class="script h-script reveal">Save the Date</h2><p class="spaced">Our Forever Begins</p><div class="orn"><i></i></div>
+  <div class="cal reveal"><h3>November 2026</h3><div class="cal-grid" id="calGrid" role="grid" aria-label="November 2026"></div></div>
+</section>
+
+<!-- 08 RSVP -->
 <section id="rsvp" class="section"><h2 class="h-serif reveal">Will You Celebrate With Us?</h2><div class="orn"><i></i></div>
   <form id="rsvpForm" class="form reveal" novalidate>
     <label>Guest name<input name="name" type="text" autocomplete="name" required maxlength="80"></label>
@@ -133,7 +136,7 @@
     <p class="status" id="rsvpStatus" role="status" aria-live="polite"></p>
   </form></section>
 
-<!-- 13 WISHES -->
+<!-- 09 WISHES -->
 <section id="wishes" class="section tint"><h2 class="script h-script reveal">Leave Your Blessings</h2><div class="orn"><i></i></div>
   <form id="wishForm" class="form reveal" novalidate>
     <label>Name<input name="name" type="text" required maxlength="60"></label>
@@ -143,19 +146,20 @@
   </form>
   <div class="wishes" id="wishList"></div></section>
 
-<!-- 14 FAMILY -->
-<section id="family" class="section">
-  <p class="spaced">With the blessings of Allah, we invite you</p><div class="orn"><i></i></div>
-  <div id="familyBox" class="family"></div></section>
-
-<!-- 15 CLOSING -->
+<!-- 10 CONCLUSION: invitation + dua -->
 <section id="closing" class="section closing">
-  <div class="arch-photo closing-arch">
-    <p class="ar dua" lang="ar" dir="rtl">بَارَكَ اللَّهُ لَكُمَا وَبَارَكَ عَلَيْكُمَا وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ</p>
-    <p class="quote">May Allah bless you both and unite you in goodness.</p>
-    <img src="assets/images/monogram.png" alt="" width="80" height="80" class="hero-mono">
-    <h2 class="script hero-names">Raneem &amp; Nahila</h2>
-    <p class="spaced">With Love &amp; Duas</p><p class="hero-date">08 November 2026</p>
+  <div class="closing-arch">
+    <div id="family" class="closing-invite">
+      <p class="spaced">With the blessings of Allah, we invite you</p><div class="orn"><i></i></div>
+      <div id="familyBox" class="family"></div>
+    </div>
+    <div class="closing-dua">
+      <p class="ar dua" lang="ar" dir="rtl">بَارَكَ اللَّهُ لَكُمَا وَبَارَكَ عَلَيْكُمَا وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ</p>
+      <p class="quote">May Allah bless you both and unite you in goodness.</p>
+      <img src="assets/images/monogram.png" alt="" width="80" height="80" class="hero-mono">
+      <h2 class="script hero-names">Raneem &amp; Nahila</h2>
+      <p class="spaced">With Love &amp; Duas</p>
+    </div>
   </div>
 </section>
 </main>
@@ -164,13 +168,6 @@
   <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path class="ic-play" d="M8 5v14l11-7z" fill="currentColor"/><path class="ic-pause" d="M7 5h4v14H7zM13 5h4v14h-4z" fill="currentColor"/></svg>
 </button>
 
-<div id="lb" class="lb" hidden role="dialog" aria-modal="true" aria-label="Photo viewer">
-  <button class="lb-x" type="button" aria-label="Close">×</button>
-  <button class="lb-p" type="button" aria-label="Previous">‹</button>
-  <img id="lbImg" alt="">
-  <button class="lb-n" type="button" aria-label="Next">›</button>
-  <p id="lbCap" class="lb-cap"></p>
-</div>
 <audio id="bgm" loop preload="none"></audio>
 
 <script src="js/config.js"></script>
@@ -180,7 +177,6 @@
 <script src="js/countdown.js"></script>
 <script src="js/calendar.js"></script>
 <script src="js/scratch.js"></script>
-<script src="js/gallery.js"></script>
 <script src="js/rsvp.js"></script>
 <script src="js/wishes.js"></script>
 </body>

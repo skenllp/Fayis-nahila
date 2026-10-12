@@ -6,13 +6,12 @@
   #navLinks{position:absolute;top:58px;right:0;width:min(230px,100%);flex-direction:column;border-radius:24px!important;padding:.6rem!important;opacity:0;transform:translateY(-8px);pointer-events:none;transition:opacity .25s,transform .25s}
   #nav.open #navLinks{opacity:1;transform:none;pointer-events:auto}
   #nav a{padding:.85rem 1rem;font-size:.78rem}
-  .journey-card{padding-top:2.6rem}
+  .journey-card{padding-top:1.8rem}
   .tl-ic{width:58px;height:58px}.tl::before{left:29px}
 }
-@media (max-width:360px){.cd div{width:62px}.tl-item h3{letter-spacing:.14em;font-size:.95rem}.lb{padding-inline:2.4rem}}
+@media (max-width:360px){.cd div{width:62px}.tl-item h3{letter-spacing:.14em;font-size:.95rem}.hero-title{font-size:2.7rem}}
 @media (min-width:761px){
-  .grid{grid-template-columns:repeat(3,1fr);gap:1.1rem}
-  .chapter{grid-template-columns:1fr 1fr;gap:4rem;text-align:left}
-  .chapter.flip .chapter-text{order:0}.chapter.flip>:first-child{order:2}
+  #nav a{padding:.6rem .78rem}
   .section{padding-inline:2rem}
 }
+@media (max-width:760px){.form{padding:1.4rem 1.1rem}.slider-ctl{margin-top:.2rem}}
