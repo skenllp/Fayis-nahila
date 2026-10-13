@@ -16,7 +16,7 @@ const ICONS = {
 function renderContent() {
   $('#coupleCards').innerHTML = [C.groom, C.bride].map(p => `
     <article class="pcard reveal">
-      <div class="pcard-photo"><img src="${esc(p.photo)}" alt="${esc(p.display)}" loading="lazy"${p.crop ? ` style="--zx:${esc(p.crop.x)};--zy:${esc(p.crop.y)};--zs:${p.crop.scale}"` : ''}></div>
+      <div class="pcard-photo${p.fullPhoto ? ' pcard-photo--full' : ''}"><img src="${esc(p.photo)}" alt="${esc(p.display)}" loading="lazy"${p.crop ? ` style="--zx:${esc(p.crop.x)};--zy:${esc(p.crop.y)};--zs:${p.crop.scale}"` : ''}></div>
       <p class="role">${esc(p.role)}</p>
       <h3>${esc(p.name)}</h3>
       <dl><dt>Parents</dt><dd>${esc(p.parents)}</dd><dt>Siblings</dt><dd>${esc(p.siblings)}</dd><dt>Address</dt><dd>${esc(p.address)}</dd></dl>

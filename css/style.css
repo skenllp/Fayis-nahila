@@ -218,15 +218,15 @@ input:focus,textarea:focus{border-color:var(--gold);outline:none;box-shadow:0 0 
 /* footer */
 .closing{background:linear-gradient(#F4EDE0,#F8E9DA)}
 .closing-arch{background:var(--bg-closing) center top/cover no-repeat,var(--cream);padding-top:clamp(9.5rem,40vw,13.5rem);min-height:clamp(760px,200vw,900px);padding-bottom:3rem}
-.closing-arch .dua{color:#7a5a2c;text-shadow:0 0 12px rgba(255,248,236,.9)}
-.closing-arch .quote,.closing-arch .spaced,.closing-arch .hero-date{text-shadow:0 0 12px rgba(255,248,236,.9)}
+.closing-arch .dua{color:#7a5a2c;text-shadow:0 0 16px rgba(255,248,236,.95),0 2px 8px rgba(20,6,14,.4)}
+.closing-arch .quote,.closing-arch .spaced,.closing-arch .hero-date{text-shadow:0 0 16px rgba(255,248,236,.95),0 2px 8px rgba(20,6,14,.4)}
 .closing-arch .hero-mono{width:56px}
 .closing-arch .hero-names{font-size:clamp(2.4rem,10vw,3.6rem)}
 @media (min-width:761px){#rsvp,#wishes{background-size:cover}}
 #rsvp .h-serif,#wishes .h-script{text-shadow:0 0 14px rgba(255,253,248,.95),0 0 3px rgba(255,253,248,.9)}
 #rsvp .h-serif{max-width:15ch;margin-inline:auto}
 .hero-names{font-size:clamp(2.5rem,10.5vw,3.9rem)}
-.closing-arch .hero-names{font-size:clamp(2.2rem,9.5vw,3.1rem)}
+.closing-arch .hero-names{font-size:clamp(2.2rem,9.5vw,3.1rem);text-shadow:0 2px 18px rgba(20,6,14,.7),0 0 6px rgba(20,6,14,.5)}
 
 /* gallery with a single photo */
 .grid.single{grid-template-columns:minmax(0,360px);justify-content:center}
@@ -285,6 +285,8 @@ body:not(.locked) .hero-inner>:nth-child(4){animation-delay:.8s}
 .pcard{transition:transform .5s,box-shadow .5s}
 .pcard:hover{transform:translateY(-4px);box-shadow:0 20px 50px rgba(68,35,52,.14)}
 .pcard-photo{overflow:hidden}
+.pcard-photo--full{aspect-ratio:auto;background:var(--cream)}
+.pcard-photo--full img{width:100%;height:auto;object-fit:contain;border-radius:20px}
 .pcard-photo img{transform:scale(var(--zs,1));transform-origin:var(--zx,50%) var(--zy,30%);object-position:var(--zx,50%) var(--zy,25%)}
 .pcard:nth-child(2).reveal{transition-delay:.15s}
 .pcard h3{margin:.4rem 0 .9rem}
@@ -335,7 +337,9 @@ body:not(.locked) .hero-inner>:nth-child(4){animation-delay:.8s}
 @keyframes wishIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 
 /* conclusion: invitation + dua over the existing closing background */
-.closing-arch{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:2.2rem;min-height:0;padding-top:clamp(9rem,36vw,12.5rem);padding-bottom:4rem}
+.closing-arch{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:2.2rem;min-height:0;padding-top:clamp(3rem,12vw,5.5rem);padding-bottom:4rem}
+.closing-arch::before{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,transparent 0%,transparent 30%,rgba(250,247,240,.4) 50%,rgba(250,247,240,.65) 70%,rgba(250,247,240,.8) 100%);pointer-events:none;z-index:0}
+.closing-arch>*{position:relative;z-index:1}
 .closing-arch .spaced,.closing-arch .family,.closing-arch .comp,.closing-arch .tel{text-shadow:0 0 12px rgba(255,248,236,.95),0 0 3px rgba(255,248,236,.9)}
 .closing-invite,.closing-dua{display:flex;flex-direction:column;align-items:center;width:100%}
 .closing-arch .family h3{font-size:clamp(1.25rem,5vw,1.7rem)}

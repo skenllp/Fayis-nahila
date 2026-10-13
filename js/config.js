@@ -15,8 +15,7 @@ window.SITE = {
     name: "Dr. Fayis Raneem A M", display: "Raneem", role: "Groom",
     parents: "A M Sanaulla & C K Najmunnisa", siblings: "Reja, Rana, Rafa",
     address: "Anandamangalath House, Trippanachi P.O., Malappuram",
-    photo: "assets/images/groom.jpg",
-    crop: { x: "60%", y: "50%", scale: 1.7 }   // zoom on the portrait; faces/outfit untouched
+    photo: "assets/images/groom.jpeg", fullPhoto: true
   },
   bride: {
     name: "Dr. Nahila C", display: "Nahila", role: "Bride",
